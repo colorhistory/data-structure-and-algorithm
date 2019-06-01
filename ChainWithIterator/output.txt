@@ -1,0 +1,7 @@
+Inserted 6 integers, list y should be 1 2 3 4 5 6
+Size of y = 6
+Ouput using forward iterators pre and post ++
+1  2  3  4  5  6  
+1  2  3  4  5  6  
+Incremented by 1 list is 2   3   4   5   6   7   
+The sum of the elements is 27
