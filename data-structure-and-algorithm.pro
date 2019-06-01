@@ -35,5 +35,7 @@ SUBDIRS += \
     VectorList \
     Chain \
     ChainWithIterator \
-    __less
+    __less \
+    __invert \
+    __find_end
 
