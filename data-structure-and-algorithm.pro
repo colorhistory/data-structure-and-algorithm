@@ -4,7 +4,8 @@ HEADERS += \
     include/LinearList.hpp \
     include/changeLength1D.hpp \
     include/ChainNode.hpp \
-    include/Exception.hpp
+    include/Exception.hpp \
+    include/ExtendedLinearList.hpp \
 
 SUBDIRS += \
     SequentialSearch \
@@ -39,5 +40,7 @@ SUBDIRS += \
     __invert \
     __find_end \
     find_first_of \
-    adjacent_find
+    adjacent_find \
+    ExtendedArrayList \
+    ios_base \
 
