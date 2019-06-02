@@ -37,5 +37,7 @@ SUBDIRS += \
     ChainWithIterator \
     __less \
     __invert \
-    __find_end
+    __find_end \
+    find_first_of \
+    adjacent_find
 

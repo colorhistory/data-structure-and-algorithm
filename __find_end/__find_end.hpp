@@ -4,6 +4,8 @@
 #include <iterator>
 #include <type_traits>
 
+#include "../__equal_to/__equal_to.hpp"
+
 namespace DSAA {
 
     /*!
@@ -170,6 +172,41 @@ namespace DSAA {
                 }
             }
         }
+    }
+
+    /*!
+     * \brief find_end
+     * \param first1
+     * \param last1
+     * \param first2
+     * \param last2
+     * \param pred
+     * \return
+     */
+    template <typename ForwardIterator1, typename ForwardIterator2, typename BinaryPredicate>
+    inline ForwardIterator1 find_end(ForwardIterator1 first1, ForwardIterator1 last1, ForwardIterator2 first2,
+                                     ForwardIterator2 last2, BinaryPredicate pred) {
+        return __find_end<typename std::add_lvalue_reference<BinaryPredicate>::type>(
+            first1, last1, first2, last2, pred,
+            typename std::iterator_traits<ForwardIterator1>::iterator_category(),
+            typename std::iterator_traits<ForwardIterator2>::iterator_category());
+    }
+
+    /*!
+     * \brief find_end
+     * \param first1
+     * \param last1
+     * \param first2
+     * \param last2
+     * \return
+     */
+    template <typename ForwardIterator1, typename ForwardIterator2>
+    inline ForwardIterator1 find_end(ForwardIterator1 first1, ForwardIterator1 last1, ForwardIterator2 first2,
+                                     ForwardIterator2 last2) {
+        typedef typename std::iterator_traits<ForwardIterator1>::value_type v1;
+        using v2 = typename std::iterator_traits<ForwardIterator2>::value_type;
+
+        return find_end(first1, last1, first2, last2, __equal_to<v1, v2>());
     }
 
 }  // namespace DSAA

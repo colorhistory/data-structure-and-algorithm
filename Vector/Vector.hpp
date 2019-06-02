@@ -53,7 +53,8 @@ inline Vector<Object>::Vector(int initSize) : theSize{initSize}, theCapacity{the
 }
 
 template <typename Object>
-inline Vector<Object>::Vector(const Vector &rhs) : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{nullptr} {
+inline Vector<Object>::Vector(const Vector &rhs)
+    : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{nullptr} {
     objects = new Object[theCapacity];
     for (int idata = 0; idata != theSize; ++idata) {
         objects[idata] = rhs.objects[idata];
@@ -86,7 +87,8 @@ inline Vector<Object>::~Vector() {
  * \brief move copy constructor
  */
 template <typename Object>
-inline Vector<Object>::Vector(Vector &&rhs) : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects} {
+inline Vector<Object>::Vector(Vector &&rhs)
+    : theSize{rhs.theSize}, theCapacity{rhs.theCapacity}, objects{rhs.objects} {
     rhs.theSize = 0;
     rhs.theCapacity = 0;
     rhs.objects = nullptr;
