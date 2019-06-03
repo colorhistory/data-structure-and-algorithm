@@ -43,4 +43,5 @@ SUBDIRS += \
     adjacent_find \
     ExtendedArrayList \
     ios_base \
+    # ExtendedChain
 
