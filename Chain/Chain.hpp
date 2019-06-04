@@ -21,7 +21,7 @@ namespace DSAA {
         bool empty() const;
         int size() const;
 
-        const T& get(int theIndex) const;
+        T& get(int theIndex) const;
         int indexOf(const T& theElement) const;
 
         void erase(int theIndex);
@@ -119,7 +119,7 @@ namespace DSAA {
      * \return
      */
     template <typename T>
-    const T& Chain<T>::get(int theIndex) const {
+    T& Chain<T>::get(int theIndex) const {
         checkIndex(theIndex);
 
         ChainNode<T>* currentNode = firstNode;

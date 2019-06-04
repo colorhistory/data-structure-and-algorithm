@@ -44,4 +44,7 @@ SUBDIRS += \
     ExtendedArrayList \
     ios_base \
     # ExtendedChain
+    CircularList \
+    BinSort_1 \
+    array
 
