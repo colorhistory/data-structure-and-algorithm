@@ -46,5 +46,7 @@ SUBDIRS += \
     # ExtendedChain
     CircularList \
     BinSort_1 \
-    array
+    array \
+    IrregualrArray \
+    Matrix
 
