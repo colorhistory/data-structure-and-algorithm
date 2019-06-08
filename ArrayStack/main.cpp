@@ -1,6 +1,4 @@
-﻿#include "bits/stdc++.h"
-
-#include "ArrayStack.hpp"
+﻿#include "ArrayStack.hpp"
 
 using namespace std;
 using namespace DSAA;

@@ -7,6 +7,7 @@ HEADERS += \
     include/Exception.hpp \
     include/ExtendedLinearList.hpp \
     include/Stack.hpp \
+    include/Queue.hpp \
 
 SUBDIRS += \
     SequentialSearch \
@@ -56,5 +57,7 @@ SUBDIRS += \
     # SparseMatrix
     DerivedArrayStack \
     ArrayStack \
-    LinkedStack
+    LinkedStack \
+    ArrayQueue \
+    LinkedQueue
 
