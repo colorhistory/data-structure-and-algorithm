@@ -6,6 +6,7 @@ HEADERS += \
     include/ChainNode.hpp \
     include/Exception.hpp \
     include/ExtendedLinearList.hpp \
+    include/Stack.hpp \
 
 SUBDIRS += \
     SequentialSearch \
@@ -48,5 +49,12 @@ SUBDIRS += \
     BinSort_1 \
     array \
     IrregualrArray \
-    Matrix
+    Matrix \
+    DiagonalMatrix \
+    TriDiagonal \
+    LowerTriangleMatrix \
+    # SparseMatrix
+    DerivedArrayStack \
+    ArrayStack \
+    LinkedStack
 

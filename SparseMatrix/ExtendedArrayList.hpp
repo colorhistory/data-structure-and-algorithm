@@ -21,14 +21,14 @@ namespace DSAA {
         int size() const;
         int capacity() const;
 
-        const T& get(int theIndex) const;
+        T& get(int theIndex) const;
         int indexOf(const T& theElement) const;
 
         void erase(int theIndex);
         void insert(int theIndex, const T& theElement);
-        virtual void push_back(const T& theElement) override {
-        }
         void output(std::ostream& out) const;
+        virtual void push_back(const T& /*theElement*/) override {
+        }
 
         void reset(int arrayLength);
         void set(int theIndex, const T& theElement);
@@ -39,6 +39,7 @@ namespace DSAA {
         iterator end();
 
         class iterator {
+          public:
             using iterator_category = std::bidirectional_iterator_tag;
             using value_type = T;
             using difference_type = std::ptrdiff_t;
@@ -143,7 +144,7 @@ namespace DSAA {
      * \return
      */
     template <typename T>
-    const T& ExtendedArrayList<T>::get(int theIndex) const {
+    T& ExtendedArrayList<T>::get(int theIndex) const {
         checkIndex(theIndex);
 
         return elements[theIndex];
