@@ -59,5 +59,8 @@ SUBDIRS += \
     ArrayStack \
     LinkedStack \
     ArrayQueue \
-    LinkedQueue
+    LinkedQueue \
+    # SortedChain
+    ThreeToLong \
+    StringToInt
 
