@@ -62,5 +62,7 @@ SUBDIRS += \
     LinkedQueue \
     # SortedChain
     ThreeToLong \
-    StringToInt
+    StringToInt \
+    InsertSort \
+    IsSortedUntil
 
