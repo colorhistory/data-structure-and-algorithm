@@ -62,5 +62,13 @@ SUBDIRS += \
     LinkedQueue \
     # SortedChain
     ThreeToLong \
-    StringToInt
+    StringToInt \
+    # LinkedBinaryTree
+    MaxPriorityQueue \
+    MaxHeap \
+    Queue \
+    SelectionSort \
+    InsertionSort \
+    ShellSort \
+    MergeSort
 
