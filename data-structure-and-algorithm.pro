@@ -70,5 +70,7 @@ SUBDIRS += \
     SelectionSort \
     InsertionSort \
     ShellSort \
-    MergeSort
+    MergeSort \
+    regex \
+    BinarySearchTree
 
