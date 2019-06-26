@@ -73,4 +73,5 @@ SUBDIRS += \
     MergeSort \
     regex \
     BinarySearchTree
+    MergeSort
 
