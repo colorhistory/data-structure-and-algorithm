@@ -72,6 +72,11 @@ SUBDIRS += \
     ShellSort \
     MergeSort \
     regex \
-    BinarySearchTree
+    BinarySearchTree \
+    hash \
+    hash2 \
+    hash3 \
+    Hash_Seperate_Chain \
+    QuadraticProbing
     MergeSort
 
