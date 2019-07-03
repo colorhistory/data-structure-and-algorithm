@@ -3,30 +3,30 @@
 
 #include "bits/stdc++.h"
 
-namespace GP {
+namespace DSAA {
 
     template <typename Comparable>
     class BinarySearchTree {
       public:
-        BinarySearchTree();
-        BinarySearchTree(const BinarySearchTree &rhs);
-        BinarySearchTree(BinarySearchTree &&rhs);
-        ~BinarySearchTree();
+        BinarySearchTree();                             // done
+        BinarySearchTree(const BinarySearchTree &rhs);  // done
+        BinarySearchTree(BinarySearchTree &&rhs);       // done
+        ~BinarySearchTree();                            // done
 
         // ADT
-        const Comparable &findMin() const;         // done
-        const Comparable &findMax() const;         // done
-        bool contains(const Comparable &x) const;  // done
-        bool isEmpty() const;                      // done
-        void printTree(std::ostream &out = std::cout) const;
+        const Comparable &findMin() const;                    // done
+        const Comparable &findMax() const;                    // done
+        bool contains(const Comparable &x) const;             // done
+        bool isEmpty() const;                                 // done
+        void printTree(std::ostream &out = std::cout) const;  // done
 
-        void makeEmpty();
+        void makeEmpty();                  // done
         void insert(const Comparable &x);  // done
         void insert(Comparable &&x);       // done
         void remove(const Comparable &x);  // done
 
-        BinarySearchTree &operator=(const BinarySearchTree &rhs);
-        BinarySearchTree &operator=(BinarySearchTree &&rhs);
+        BinarySearchTree &operator=(const BinarySearchTree &rhs);  // done
+        BinarySearchTree &operator=(BinarySearchTree &&rhs);       // done
 
       private:
         struct BinaryNode;
@@ -52,12 +52,24 @@ namespace GP {
         };
     };
 
+    /*!
+     * \brief BinarySearchTree<Comparable>::BinaryNode::BinaryNode
+     * \param theElement
+     * \param leftSubtree
+     * \param rightSubTree
+     */
     template <typename Comparable>
-    inline BinarySearchTree<Comparable>::BinaryNode::BinaryNode(const Comparable &theElement, BinaryNode *leftSubtree,
-                                                                BinaryNode *rightSubTree)
+    inline BinarySearchTree<Comparable>::BinaryNode::BinaryNode(const Comparable &theElement,
+                                                                BinaryNode *leftSubtree, BinaryNode *rightSubTree)
         : element{theElement}, left{leftSubtree}, right{rightSubTree} {
     }
 
+    /*!
+     * \brief BinarySearchTree<Comparable>::BinaryNode::BinaryNode
+     * \param theElement
+     * \param leftSubtree
+     * \param rightSubtree
+     */
     template <typename Comparable>
     BinarySearchTree<Comparable>::BinaryNode::BinaryNode(Comparable &&theElement, BinaryNode *leftSubtree,
                                                          BinaryNode *rightSubtree)
@@ -93,6 +105,14 @@ namespace GP {
     }
 
     /*!
+     * \brief BinarySearchTree<Comparable>::makeEmpty
+     */
+    template <typename Comparable>
+    void BinarySearchTree<Comparable>::makeEmpty() {
+        makeEmpty(root);
+    }
+
+    /*!
      * \brief BinarySearchTree<Comparable>::insert
      * \param x
      */
@@ -117,6 +137,29 @@ namespace GP {
     template <typename Comparable>
     void BinarySearchTree<Comparable>::remove(const Comparable &x) {
         remove(x, root);
+    }
+
+    /*!
+     * \brief BinarySearchTree<Comparable>::operator =
+     * \param rhs
+     * \return
+     */
+    template <typename Comparable>
+    BinarySearchTree<Comparable> &BinarySearchTree<Comparable>::operator=(const BinarySearchTree &rhs) {
+        BinarySearchTree copy = rhs;
+        std::swap(*this, copy);
+        return *this;
+    }
+
+    /*!
+     * \brief BinarySearchTree<Comparable>::operator =
+     * \param rhs
+     * \return
+     */
+    template <typename Comparable>
+    BinarySearchTree<Comparable> &BinarySearchTree<Comparable>::operator=(BinarySearchTree &&rhs) {
+        std::swap(root, rhs.root);
+        return *this;
     }
 
     /*!
@@ -177,6 +220,39 @@ namespace GP {
     }
 
     /*!
+     * \brief BinarySearchTree<Comparable>::BinarySearchTree
+     */
+    template <typename Comparable>
+    BinarySearchTree<Comparable>::BinarySearchTree() : root{nullptr} {
+    }
+
+    /*!
+     * \brief BinarySearchTree<Comparable>::BinarySearchTree
+     * \param rhs
+     */
+    template <typename Comparable>
+    BinarySearchTree<Comparable>::BinarySearchTree(const BinarySearchTree &rhs) {
+        root = clone(rhs.root);
+    }
+
+    /*!
+     * \brief BinarySearchTree<Comparable>::BinarySearchTree
+     * \param rhs
+     */
+    template <typename Comparable>
+    BinarySearchTree<Comparable>::BinarySearchTree(BinarySearchTree &&rhs) : root{rhs.root} {
+        rhs.root = nullptr;
+    }
+
+    /*!
+     * \brief BinarySearchTree<Comparable>::~BinarySearchTree
+     */
+    template <typename Comparable>
+    BinarySearchTree<Comparable>::~BinarySearchTree() {
+        makeEmpty();
+    }
+
+    /*!
      * \brief BinarySearchTree<Comparable>::findMin
      * \return
      */
@@ -216,7 +292,7 @@ namespace GP {
         if (isEmpty()) {
             throw std::runtime_error("");
         }
-        findMax(root)->element;
+        return findMax(root)->element;
     }
 
     /*!
@@ -256,6 +332,20 @@ namespace GP {
     }
 
     /*!
+     * \brief BinarySearchTree<Comparable>::makeEmpty
+     * \param subtree
+     */
+    template <typename Comparable>
+    void BinarySearchTree<Comparable>::makeEmpty(BinaryNode *&subtree) {
+        if (subtree != nullptr) {
+            makeEmpty(subtree->left);
+            makeEmpty(subtree->right);
+            delete subtree;
+        }
+        subtree = nullptr;
+    }
+
+    /*!
      * \brief BinarySearchTree<Comparable>::printTree
      * \param subtree
      * \param out
@@ -269,6 +359,21 @@ namespace GP {
         }
     }
 
-}  // namespace GP
+    /*!
+     * \brief BinarySearchTree<Comparable>::clone
+     * \param subtree
+     * \return
+     */
+    template <typename Comparable>
+    typename BinarySearchTree<Comparable>::BinaryNode *BinarySearchTree<Comparable>::clone(
+        BinaryNode *subtree) const {
+        if (subtree == nullptr) {
+            return nullptr;
+        } else {
+            return new BinaryNode{subtree->element, clone(subtree->left), clone(subtree->right)};
+        }
+    }
+
+}  // namespace DSAA
 
 #endif  // BINARYSEARCHTREE_HPP
